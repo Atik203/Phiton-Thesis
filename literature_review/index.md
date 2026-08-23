@@ -12,9 +12,9 @@
 |---|---|---|---|---|---|---|---|
 | 1 | AgentDojo (Debenedetti et al.) | 2024 | NeurIPS (Datasets & Benchmarks) | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/01-agentdojo-debenedetti-2024.md](papers/01-agentdojo-debenedetti-2024.md) |
 | 2 | InjecAgent (Zhan et al.) | 2024 | Findings of ACL | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/02-injecagent-zhan-2024.md](papers/02-injecagent-zhan-2024.md) |
-| 3 | MCPTox (Wang et al.) | 2026 | AAAI | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/03-mcptox-wang-2026.md](papers/03-mcptox-wang-2026.md) |
-| 4 | Agent Security Bench / ASB (Zhang et al.) | 2025 | ICLR | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/04-asb-zhang-2025.md](papers/04-asb-zhang-2025.md) |
-| 5 | ToolGate (Liu et al.) | 2026 | arXiv preprint | **Closest (System)** | High | 2026-08-24 | [papers/05-toolgate-liu-2026.md](papers/05-toolgate-liu-2026.md) |
+| 3 | MCPTox (Wang et al.) | 2025 | arXiv (AAAI 2026 submission) | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/03-mcptox-wang-2025.md](papers/03-mcptox-wang-2025.md) |
+| 4 | Agent Security Bench / ASB (Zhang et al.) | 2025 | ICLR 2025 | **Anchor (Benchmark)** | Low | 2026-08-24 | [papers/04-asb-zhang-2025.md](papers/04-asb-zhang-2025.md) |
+| 5 | ToolGate (Liu et al.) | 2026 | arXiv preprint (2601.04688v1) | **Closest (System)** | High | 2026-08-24 | [papers/05-toolgate-liu-2026.md](papers/05-toolgate-liu-2026.md) |
 | — | TrustAgent (Hua et al.) | 2024 | Findings of EMNLP | Pending | Pending | — | — |
 | — | MELON (Zhu et al.) | 2025 | arXiv preprint | Pending | Pending | — | — |
 | — | StruQ (Chen et al.) | 2025 | USENIX Security | Pending | Pending | — | — |
@@ -46,7 +46,7 @@
 - AgentDojo (Debenedetti et al., 2024) — **Anchor**; most extensible harness (97 tasks, 629 test cases, 4 environments); best benign utility 78% (Claude 3.5 Sonnet); defenses fail to get both high utility + low ASR
 
 **Important context:**
-- MCPTox (Wang et al., 2026) — **Anchor**; first live MCP-server benchmark (1,348 cases, 45 real servers); up to 72.8% ASR, <3% refusal — distinct poisoning-at-registration surface our gate must also cover
+- MCPTox (Wang et al., 2025) — **Anchor**; first live MCP-server benchmark (1,312 cases in v1, 45 real servers, 353 tools; up to 72.8% ASR, <3% refusal) — distinct poisoning-at-registration surface our gate must also cover
 - ASB (Zhang et al., 2025) — **Anchor**; broadest coverage (4 attack families + PoT backdoor, 27 methods, 13 backbones, 400+ tools); highest ASR 84.3%; demonstrates need for unified defense across system/user/tool/memory stages
 
 **Diagnostic / measurement (cite for threat severity):**
@@ -63,7 +63,7 @@
 | Block tool calls diverging from user intent under injection | TrustAgent (EMNLP 2024) — via hand-authored Agent Constitution pre/in/post-planning | TrustAgent uses static natural-language constitution + GPT-4 sandbox emulation; no live tool evaluation; requires hand-authoring per domain |
 | Contract-grounded tool execution | ToolGate (Liu et al., 2026) — Hoare-style pre/postconditions on symbolic world-state | ToolGate requires manual contract per tool, never evaluated on injection/poisoning benchmarks (InjecAgent/MCPTox), no adaptive-attack testing |
 | Indirect prompt injection benchmarking | InjecAgent (ACL 2024), AgentDojo (NeurIPS 2024), ASB (ICLR 2025) | All reveal high ASR but propose no defense — we reuse as evaluation harness |
-| Tool-poisoning at registration time | MCPTox (AAAI 2026) — 1,348 live-server cases | MCPTox measures vulnerability only; proposes no defense; registration-time surface never tested against ToolGate-style gates |
+| Tool-poisoning at registration time | MCPTox (2508.14925v1) — 1,312 live-server cases, 45 servers, 353 tools | MCPTox measures vulnerability only; proposes no defense; registration-time surface never tested against ToolGate-style gates |
 | Cross-surface unified defense | ASB (ICLR 2025) — evaluates 11 defenses across 4 stages | No defense neutralizes all stages; ASB evaluates existing defenses but does not propose gate mechanism |
 | Formal/provable security | StruQ (USENIX 2025) — structured instruction/data channels via fine-tuning; CaMeL — planner/executor separation with capabilities | Both require model-level changes/fine-tuning; heavy deployment cost vs. our model-agnostic middleware claim |
 | Training-free injection detection | MELON (2025) — masked re-execution + tool comparison | Doubles inference cost (2× trajectory); empirical only, no formal guarantees |
@@ -74,10 +74,10 @@
 
 | Date | Paper | Status Change | Source |
 |---|---|---|---|
-| 2026-08-24 | AgentDojo | Confirmed NeurIPS 2024 Datasets & Benchmarks, 97 tasks / 629 cases, code https://github.com/ethz-spylab/agentdojo | NeurIPS proceedings + arXiv 2406.13352 |
-| 2026-08-24 | InjecAgent | Confirmed Findings of ACL 2024, DOI 10.18653/v1/2024.findings-acl.624, 1,054 cases / GPT-4 24%→47% ASR | ACL Anthology 2024.findings-acl.624 + arXiv html |
-| 2026-08-24 | MCPTox | Confirmed AAAI 2026, DOI 10.1609/aaai.v40i42.40895, 1,348 cases on 45 live MCP servers | AAAI proceedings |
-| 2026-08-24 | ASB | Confirmed ICLR 2025 Poster, 400+ tools / 13 backbones / 84.3% max ASR, code https://github.com/agiresearch/ASB | ICLR 2025 virtual + arXiv 2410.02644 |
-| 2026-08-24 | ToolGate | Added as Paper #5 — Closest (System), High threat. arXiv 2601.04688, evaluated on ToolBench/MCP-Universe (not injection benchmarks) | arXiv abs + https://github.com/OceannTwT/ToolGate |
+| 2026-08-24 | AgentDojo | Verified full html 2406.13352v3: 97 tasks / 629 cases (74 tools, 4 envs), <66% benign utility, tool filter 7.5% ASR | arXiv html + https://github.com/ethz-spylab/agentdojo + leaderboard |
+| 2026-08-24 | InjecAgent | Verified full html 2403.02691v3: 1,054 cases (17 user tools × 62 attacker), GPT-4 24%→47% ASR, user-case Cramér's V 0.28–0.31 | ACL Anthology 2024.findings-acl.624 + html |
+| 2026-08-24 | MCPTox | Verified full html 2508.14925v1: 1,312 cases (224/548/725 paradigms), 45 live servers / 353 tools, o1-mini 72.8% ASR, <3% refusal, IPI→TPA 0% | arXiv html + https://anonymous.4open.science/r/AAAI26-7C02 |
+| 2026-08-24 | ASB | Verified full html 2410.02644v4: 10 scenarios, 400+ tools, 27 methods, 13 backbones, mixed 84.3% ASR, NRP metric | arXiv html + https://github.com/agiresearch/ASB |
+| 2026-08-24 | ToolGate | Verified full html 2601.04688v1 (52k chars + App G): Hoare {P}T{Q}, 29.4% rejection, GPT-5.2 85.5/93.0/91.8 ToolBench, no adversarial eval | arXiv html + https://github.com/OceannTwT/ToolGate |
 | — | TrustAgent | Pending — Findings of EMNLP 2024, staged constitution approach | — |
 | — | MELON / StruQ / CaMeL / Adaptive Attacks | Pending | — |
