@@ -439,7 +439,7 @@ Baseline B2 (ToolGate reimpl) replaces the scorer with:
 | **Weeks 5–8 (Sep) — Gate Build** | Full gate + harness | Implement gate middleware (embed + rule + threshold + escalate); wire ReAct → gate → executor; JSONL logging; threshold sweep infra | Unit tests per Section 14; 100-case integration run on InjecAgent+MCPTox | Gate 2: gate correctly blocks/allows on integration sample; latency p95 measured |
 | **Weeks 9–12 (Oct) — Main Evaluation** | Full benchmark runs + ablations | — | B1 vs B2 vs Ours on full InjecAgent (1,054) + MCPTox (1,348 or snapshot); 4 ablations (A1–A4); per-category breakdowns; bootstrap CIs | Primary results table (ASR/FPR/latency/setup-cost) + Pareto curve + error taxonomy (50 cases) |
 | **Weeks 13–14 (Nov) — Stretch + Hardening** | Drift pilot (if time) + failure analysis + polish | Optional: 20-case multi-turn drift pilot (AgentDojo subset) | Drift pilot ASR if run; full error analysis; threshold sensitivity figure | Gate 3: results freeze; decide if drift pilot is included as "preliminary" or future work |
-| **Weeks 15–16 (Dec–Jan) — Writing & Submission** | Thesis + paper + artifact | Thesis drafting; reproducibility package (pip wrapper + contracts + logs) | Final figures (ASR vs. ToolGate, FPR-latency tradeoff, setup-cost bar) | 📌 FYDP final defence; 📌 pip package + GitHub; 📌 workshop/Findings paper draft |
+| **Weeks 15–16 (Dec–Jan) — Writing & Submission** | Thesis + paper + artifact | Thesis drafting; reproducibility package (pip wrapper + contracts + logs) | Final figures (ASR vs. ToolGate, FPR-latency tradeoff, setup-cost bar) | 📌 Thesis final defence; 📌 pip package + GitHub; 📌 workshop/Findings paper draft |
 
 **Why this ordering is critical:**
 
@@ -616,7 +616,7 @@ Agent proposes tool_call ──────────→ [Gate: embed + rules 
 - Latency overhead p95 < 100ms per tool call on CPU (embedding) — supports low-medium compute claim.
 - ToolGate reimpl runs and is documented (coverage % reported) — necessary for fair comparison, even if its ASR is not reproduced exactly.
 
-**Graduation outcome:** Completed FYDP thesis + evaluated gate + pip package + evaluation report + paper draft (minimum: workshop submission; target: Findings-tier), fully reproducible with `blueprint.md` as single source of truth.
+**Graduation outcome:** Completed Thesis + evaluated gate + pip package + evaluation report + paper draft (minimum: workshop submission; target: Findings-tier), fully reproducible with `blueprint.md` as single source of truth.
 
 ---
 
@@ -628,7 +628,7 @@ Agent proposes tool_call ──────────→ [Gate: embed + rules 
 
 **Research platform potential:** The intent-contract idea generalizes beyond tool calls to any agent side effect (file writes via code exec, browser automation, robotic actions) — any domain where "what the user asked" can be structured. Worth noting as scope expansion, not claimed now.
 
-**Long-term intent memory:** Cross-session intent (user's standing permissions) + per-session intent — already a natural extension: "allow this agent to always send email to my team, but never externally." Not in FYDP scope, but named.
+**Long-term intent memory:** Cross-session intent (user's standing permissions) + per-session intent — already a natural extension: "allow this agent to always send email to my team, but never externally." Out of thesis scope, but named.
 
 **Adaptive attacker co-evolution:** As Zhan et al. 2025 shows, adaptive attackers will target the gate's threshold. Future work could evaluate gate-aware paraphrase attacks and threshold randomization as defense — explicitly out of scope for the 4-month core, but a strong next paper.
 

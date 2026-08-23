@@ -162,7 +162,7 @@ AgentDojo's contribution is a **dynamic, stateful, extensible evaluation framewo
 | **ASB (Zhang et al., 2025)** | Superset — ASB covers DPI/IPI + memory poisoning + PoT backdoor + mixed; AgentDojo covers IPI only but with deeper statefulness. ASB's mixed attack 84% ASR shows single-vector defenses like AgentDojo's tool filter will not suffice alone. |
 | **ToolGate (Liu et al., 2026)** | Predecessor gate — ToolGate is formal Hoare contracts with world-state; AgentDojo's tool filter is informal allowlist. Our gate sits between them: more expressive than allowlist, lighter than formal contracts, and unlike ToolGate is tested adversarially. |
 
-### 9. Relevance to FYDP
+### 9. Relevance to Thesis
 
 ★★★★★ (Essential — anchor benchmark)
 

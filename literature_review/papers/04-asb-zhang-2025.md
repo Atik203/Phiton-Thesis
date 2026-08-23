@@ -151,7 +151,7 @@ Per conclusion/future work: simulated (not live) tools/scenarios, no params (cap
 | **MCPTox (Wang et al., 2025)** | Extension — ASB is simulated; MCPTox is live MCP servers and proves simulated-only misses real poisoning (IPI payloads 0% on MCPTox). We pair them to cover simulated breadth (ASB cited) + live depth (MCPTox evaluated). |
 | **ToolGate (Liu et al., 2026)** | Predecessor gate — ToolGate is a *proposed* gate (formal Hoare) but evaluated only on task completion; ASB shows the *need* for a gate (84% mixed ASR, defenses fail) but proposes none. Our gate is the defense ASB is missing, and we evaluate it where ToolGate never did (adversarial). |
 
-### 9. Relevance to FYDP
+### 9. Relevance to Thesis
 
 ★★★★☆ (Important context + superset citation)
 

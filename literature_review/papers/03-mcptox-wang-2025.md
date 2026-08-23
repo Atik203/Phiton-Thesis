@@ -150,7 +150,7 @@ Per §5: single-turn only (no conversational memory poisoning or sleeper trigger
 | **ASB (Zhang et al., 2025)** | Superset — ASB covers DPI/IPI + memory poisoning + PoT backdoor + mixed (27 methods) but with simulated tools; MCPTox is the only live-MCP benchmark. ASB's mixed 84% ASR shows even if we solve IPI+TPA, memory/PoT remain future work. |
 | **ToolGate (Liu et al., 2026)** | Baseline to beat — ToolGate's formal contracts would need per-tool authoring for MCPTox's 353 tools (setup cost we will count); MCPTox is the adversarial benchmark ToolGate never evaluated on, so reporting ToolGate ASR on MCPTox is our novel cross-paper contribution. |
 
-### 9. Relevance to FYDP
+### 9. Relevance to Thesis
 
 ★★★★★ (Essential — anchor benchmark, live-server poisoning)
 

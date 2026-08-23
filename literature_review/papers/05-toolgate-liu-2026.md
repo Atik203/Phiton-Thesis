@@ -151,7 +151,7 @@ Per §6/Limitations: (1) text/structured only — no multimodal/long-chain colla
 | **MCPTox (Wang et al., 2025)** | Evaluation substrate ToolGate never used — MCPTox is live MCP servers, which overlaps with ToolGate's MCP-Universe (11 real MCP servers) but tests poisoning vs. task completion; ToolGate's retrieval over thousands of tools is directly relevant to MCP scale, but its contracts would need authoring for MCPTox's 353 tools (setup cost we count). |
 | **ASB (Zhang et al., 2025)** | Superset — ASB's 27-method, 13-backbone breadth shows ToolGate's task-completion SOTA does not imply security (ASB mixed 84% ASR); ASB's formalization in §3 mirrors ToolGate's Hoare formalization in Appendix G — both use FOL, but for different stages (ASB for attacks, ToolGate for defense). |
 
-### 9. Relevance to FYDP
+### 9. Relevance to Thesis
 
 ★★★★★ (Critical — closest system, High threat)
 

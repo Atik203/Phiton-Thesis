@@ -145,7 +145,7 @@ Per §8: (1) fixed hacking prompt (variation and dynamic enhancement not explore
 | **ASB (Zhang et al., 2025)** | Superset — ASB includes DPI/IPI among 27 methods but InjecAgent's per-tool breakdown (17×62) is more granular for IPI alone; ASB's 84% mixed-attack ASR shows single-vector ASR (24–47% here) underestimates combined threat. |
 | **ToolGate (Liu et al., 2026)** | Baseline to beat — ToolGate is a gate that has never been tested on InjecAgent; we will be the first to report ToolGate-style gating ASR on InjecAgent. |
 
-### 9. Relevance to FYDP
+### 9. Relevance to Thesis
 
 ★★★★★ (Essential — primary evaluation substrate)
 
