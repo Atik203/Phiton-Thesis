@@ -6,7 +6,7 @@
 
 MCP-style agents now execute real actions (email, payments, code, files). Benchmarks show systemic hijack vulnerability — AgentDojo 629 cases, InjecAgent 1,054 cases (GPT-4 24%→47% ASR), MCPTox 1,312 cases on 45 live servers (up to 72.8% ASR, <3% refusal), ASB 84.3% mixed ASR — yet defenses are siloed or require hand-authored contracts (ToolGate, arXiv 2601.04688v1, never tested adversarially).
 
-This project builds a **model-agnostic middleware gate** that derives an *intent contract* automatically from the user's original request and blocks/escalates any tool call inconsistent with that intent — evaluated head-to-head against an unprotected agent and a ToolGate reimplementation on the benchmarks ToolGate never tested.
+This project builds a **model-agnostic middleware gate** that derives an _intent contract_ automatically from the user's original request and blocks/escalates any tool call inconsistent with that intent — evaluated head-to-head against an unprotected agent and a ToolGate reimplementation on the benchmarks ToolGate never tested.
 
 ---
 
@@ -15,7 +15,7 @@ This project builds a **model-agnostic middleware gate** that derives an *intent
 ```
 E:\Phiton\
 ├── README.md                      # this file
-├── blueprint.md                   # single source of truth — 18-section research blueprint (Sections 0–18)
+├── blueprint.md                   # single source of truth
 ├── literature_review\
 │   ├── index.md                   # Master Comparison Matrix + Gap Map + Verification Log (5 anchors + Closest)
 │   └── papers\
@@ -33,9 +33,9 @@ E:\Phiton\
 
 ## Literature Review
 
-* **Index:** [`literature_review/index.md`](literature_review/index.md) — Master Matrix (5 verified 2026-08-24), Legend, Quick Triage, Gap Map, Verification Log
-* **Papers:** 5 detailed reviews in `literature_review/papers/` — each follows the same template (badges, Summary, Relevant to Our Idea, Gap, Q1–Q9, Citation, Method, Results, Limitations, Comparison, Positioning, Reproducibility, Cross-References, Relevance to Thesis)
-* **Blueprint:** [`blueprint.md`](blueprint.md) — Phase 1–5, Sections 0–18 (design decisions, pipeline, data flow, models/tools, datasets, evaluation, edge cases, risks, roadmap, implementation order, supervisor/team explanations, expected outcomes, future work, Reviewer #2 critique)
+- **Index:** [`literature_review/index.md`](literature_review/index.md) — Master Matrix (5 verified 2026-08-24), Legend, Quick Triage, Gap Map, Verification Log
+- **Papers:** 5 detailed reviews in `literature_review/papers/` — each follows the same template (badges, Summary, Relevant to Our Idea, Gap, Q1–Q9, Citation, Method, Results, Limitations, Comparison, Positioning, Reproducibility, Cross-References, Relevance to Thesis)
+- **Blueprint:** [`blueprint.md`](blueprint.md) — Phase 1–5, Sections 0–18 (design decisions, pipeline, data flow, models/tools, datasets, evaluation, edge cases, risks, roadmap, implementation order, supervisor/team explanations, expected outcomes, future work, Reviewer #2 critique)
 
 All 5 papers verified via full arXiv html (not snippets).
 
@@ -58,11 +58,11 @@ All 5 papers verified via full arXiv html (not snippets).
 
 ## Evaluation Plan (abridged from `blueprint.md:Section 9`)
 
-* **B1:** Unprotected ReAct (no gate) — raw vulnerability floor
-* **B2:** ToolGate reimplementation (Hoare `{P}T{Q}` per Appendix G, symbolic world-state) — validated on ToolBench/MCP-Universe subset before adversarial runs
-* **Metrics:** ASR-valid, FPR, escalation rate, latency p50/p95, setup cost, utility retention on benign cases
-* **Ablations:** A1 semantic-only, A2 rule-only, A3 raw-request vs structured contract, A4 threshold/escalate sweep
-* **Stats:** Bootstrap 95% CI on ASR, paired McNemar per case, per-risk-category breakdown (MCPTox 11 categories, InjecAgent 17 tools)
+- **B1:** Unprotected ReAct (no gate) — raw vulnerability floor
+- **B2:** ToolGate reimplementation (Hoare `{P}T{Q}` per Appendix G, symbolic world-state) — validated on ToolBench/MCP-Universe subset before adversarial runs
+- **Metrics:** ASR-valid, FPR, escalation rate, latency p50/p95, setup cost, utility retention on benign cases
+- **Ablations:** A1 semantic-only, A2 rule-only, A3 raw-request vs structured contract, A4 threshold/escalate sweep
+- **Stats:** Bootstrap 95% CI on ASR, paired McNemar per case, per-risk-category breakdown (MCPTox 11 categories, InjecAgent 17 tools)
 
 ---
 
@@ -90,19 +90,19 @@ python harness/compare_b2.py --baseline toolgate --report comparison.json
 
 ## Publication Target
 
-Realistic: security/agentic-AI workshop or Findings track (EMNLP/ACL Findings, USENIX-adjacent) — Q2 journal equivalent (e.g., *Journal of Information Security and Applications*, *Applied Intelligence*) is feasible with rigorous ASR/FPR/latency/setup-cost reporting and error taxonomy (see `blueprint.md:Section 18` Reviewer #2 checklist).
+Realistic: security/agentic-AI workshop or Findings track (EMNLP/ACL Findings, USENIX-adjacent) — Q2 journal equivalent (e.g., _Journal of Information Security and Applications_, _Applied Intelligence_) is feasible with rigorous ASR/FPR/latency/setup-cost reporting and error taxonomy (see `blueprint.md:Section 18` Reviewer #2 checklist).
 
 ---
 
 ## Verified Papers
 
-| # | Paper | Venue | Role |
-|---|---|---|---|
-| 1 | AgentDojo (Debenedetti et al., 2024) | NeurIPS D&B | Anchor benchmark |
-| 2 | InjecAgent (Zhan et al., 2024) | Findings of ACL 2024 | Anchor benchmark |
-| 3 | MCPTox (Wang et al., 2025) | arXiv → AAAI 2026 | Anchor benchmark (live) |
-| 4 | ASB (Zhang et al., 2025) | ICLR 2025 | Anchor superset |
-| 5 | ToolGate (Liu et al., 2026) | arXiv 2601.04688v1 | Closest system (B2) |
+| #   | Paper                                | Venue                | Role                    |
+| --- | ------------------------------------ | -------------------- | ----------------------- |
+| 1   | AgentDojo (Debenedetti et al., 2024) | NeurIPS D&B          | Anchor benchmark        |
+| 2   | InjecAgent (Zhan et al., 2024)       | Findings of ACL 2024 | Anchor benchmark        |
+| 3   | MCPTox (Wang et al., 2025)           | arXiv → AAAI 2026    | Anchor benchmark (live) |
+| 4   | ASB (Zhang et al., 2025)             | ICLR 2025            | Anchor superset         |
+| 5   | ToolGate (Liu et al., 2026)          | arXiv 2601.04688v1   | Closest system (B2)     |
 
 Full reviews: [`literature_review/papers/`](literature_review/papers/)
 
@@ -120,4 +120,4 @@ Full reviews: [`literature_review/papers/`](literature_review/papers/)
 
 ---
 
-*Last updated: 2026-08-24 — blueprint is the single source of truth.*
+_Last updated: 2026-08-24 — blueprint is the single source of truth._
